@@ -1,0 +1,8 @@
+﻿@model PageViewModel<Business.Models.HomeSection>
+<section class="section">
+    <h4>@Model.Data.Id - @Model.Data.Title</h4>
+    <textarea>@Model.Data.Detail</textarea>
+    <p>@Model.Metadata.Title</p>
+    <p>@Model.Metadata.Description</p>
+    <p>@Model.Metadata.Keywords</p>
+</section>

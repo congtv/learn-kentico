@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup Label="Globals">
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<RootNamespace>Site1</RootNamespace>
+		<UserSecretsId>79c858af-5444-4954-8d08-6592a961e82a</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="App_Data\CMSModules\WebFarm\webfarm.sync" />
+	</ItemGroup>
+	
+	<!--Include the site data folder in the publish in case site specific files were stored during development.-->
+	<ItemGroup>
+		<Content Include="DancingGoatCore\**">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="Components\InlineEditors\_Text.cshtml" />
+	  <None Include="Components\Sections\_SingleColumn.cshtml" />
+	  <None Include="Components\Sections\_TwoColumn.cshtml" />
+	  <None Include="Components\Widgets\_Text.cshtml" />
+	  <None Include="PageTemplates\_BasicTemplate.cshtml" />
+	  <None Include="Views\Home\Index.cshtml" />
+	  <None Include="Views\LandingPage\Index.cshtml" />
+	  <None Include="Views\Shared\DisplayTemplates\Country.cshtml" />
+	  <None Include="Views\Shared\DisplayTemplates\UserMessage.cshtml" />
+	  <None Include="Views\Shared\UserMessage.cshtml" />
+	  <None Include="Views\Shared\_DefaultScripts.cshtml" />
+	  <None Include="Views\Shared\_DefaultStylesheets.cshtml" />
+	  <None Include="Views\Shared\_DropdownTrigger.cshtml" />
+	  <None Include="Views\Shared\_Layout.cshtml" />
+	  <None Include="Views\Shared\_ListItemWithLink.cshtml" />
+	  <None Include="Views\Shared\_PageBuilderLayout.cshtml" />
+	  <None Include="Views\Shared\_PageTemplateLayout.cshtml" />
+	  <None Include="Views\Shared\_UserMessage.cshtml" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\Business\Business.csproj" />
+	</ItemGroup>
+
+</Project>
+

@@ -1,0 +1,22 @@
+﻿@using Site1.Components.InlineEditors
+@using Site1.Components.Widgets
+@model ComponentViewModel<Site1.Components.Widgets.TextProperties>
+
+@inject IPageBuilderDataContextRetriever ContextRetriever
+
+@{ var text = Model?.Properties?.Text; } 
+
+@if (ContextRetriever?.Retrieve()?.EditMode == true)
+{
+    var model = new TextViewModel
+    {
+        PropertyName = nameof(TextProperties.Text),
+        Text = text
+    };
+
+    <partial name="~/Components/InlineEditors/_Text.cshtml" model="model" />
+}
+else
+{
+    @Html.Raw(text);
+}

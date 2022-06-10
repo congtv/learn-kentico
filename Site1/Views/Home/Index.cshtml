@@ -1,0 +1,33 @@
+﻿@using Business.Models
+@model PageViewModel<Home>
+@{
+    Layout = "_Layout";
+}
+
+@{
+    string? backgroundLeft, backgroundRight;
+    backgroundLeft = backgroundRight = default;
+    var attachments = Model?.Data.Attachments;
+
+    if (attachments?.Any() == true)
+    {
+        backgroundLeft = attachments.FirstOrDefault(attachment => attachment?.FileName?.Contains("background-left") == true)?.AttachmentUrl?.RelativePath;
+        backgroundRight = attachments.FirstOrDefault(attachment => attachment?.FileName?.Contains("background-right") == true)?.AttachmentUrl?.RelativePath;
+    }
+}
+
+<header class="row mc-page-fold-left" style="background-image:url(@backgroundLeft)">
+    <div class="container mc-section-3">
+        <div class="col xl4 offset-xl8 l7 offset-l5 m9 offset-m3 s12">
+
+            @foreach (var homeSection in Model.Data.HomeSections)
+            {
+                <section class="section">
+                    <h4>@homeSection.Id - @homeSection.Title</h4>
+                    <textarea>@homeSection.Detail</textarea>
+                    <a href="@homeSection.Url">Url</a>
+                </section>
+            }
+        </div>
+    </div>
+</header>
